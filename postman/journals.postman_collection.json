@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "/story/:storyId POST new story with ID",
+			"name": "/journals GET all journals",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -42,7 +42,7 @@
 			"response": []
 		},
 		{
-			"name": "/story/:storyId POST new story with ID Copy",
+			"name": "/journal POST new journal",
 			"request": {
 				"method": "POST",
 				"header": [
