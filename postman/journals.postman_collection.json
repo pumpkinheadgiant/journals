@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "7a68e0a5-2bab-4591-a77a-ef907422469a",
+		"name": "journals",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/story/:storyId POST new story with ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"sad\",\n  \"title\": \"A Sad Story\",\n  \"pages\": [\n    {\n      \"key\": \"intro\",\n      \"paragraphs\": [\n        \"You are born. Happy Birthday!\",\n        \"Sadly, this is the end of your tale.\"\n      ]\n    }\n  ]\n}\n"
+				},
+				"url": {
+					"raw": "localhost:8080/journals",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"journals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/story/:storyId POST new story with ID Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Name\": \"sad\",\n  \"Entries\": [\"A Sad Story\", \"super sad story, continued...\"]\n}\n"
+				},
+				"url": {
+					"raw": "localhost:8080/journal",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"journal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

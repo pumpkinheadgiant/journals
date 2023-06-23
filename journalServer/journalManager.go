@@ -26,6 +26,11 @@ type Journal struct {
 
 type JournalEntry string
 
+func (j *JournalManager) DoesJournalExist(name string) bool {
+	_, exists := j.journals[name]
+	return exists
+}
+
 func (j *JournalManager) GetAllJournals() ([]Journal, error) {
 	journals := []Journal{}
 
@@ -43,12 +48,13 @@ func (j *JournalManager) GetJournalByName(name string) (Journal, error) {
 	return journal, nil
 }
 
-func (j *JournalManager) AddNewJournal(name string) error {
-	_, exists := j.journals[name]
+func (j *JournalManager) AddNewJournal(journal Journal) error {
+	_, exists := j.journals[journal.Name]
 	if exists {
-		return fmt.Errorf("journal with Name '%v' already exists", name)
+		return fmt.Errorf("journal with Name '%v' already exists", journal.Name)
 	} else {
-		j.journals[name] = Journal{Name: name}
+		// more validation here....
+		j.journals[journal.Name] = journal
 	}
 	return nil
 }

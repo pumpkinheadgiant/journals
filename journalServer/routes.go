@@ -20,7 +20,24 @@ func GetAllJournalsHandler(w http.ResponseWriter, req *http.Request) {
 }
 
 func PostJournalHandler(w http.ResponseWriter, req *http.Request) {
-
+	w.Header().Set("Content-Type", "application/json")
+	newJournal := Journal{}
+	decoder := json.NewDecoder(req.Body)
+	err := decoder.Decode(&newJournal)
+	if err != nil {
+		// handle error
+	} else {
+		if journalManager.DoesJournalExist(newJournal.Name) {
+			// handle error
+			w.WriteHeader(409)
+		} else {
+			err = journalManager.AddNewJournal(newJournal)
+			if err != nil {
+				// handle error
+			}
+			w.WriteHeader(201)
+		}
+	}
 }
 
 func GetJournalHandler(w http.ResponseWriter, req *http.Request) {
