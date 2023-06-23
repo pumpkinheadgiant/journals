@@ -4,8 +4,15 @@ import "fmt"
 
 var journalManager JournalManager
 
+var initialJournal = Journal{
+	Name:    "initial journal",
+	Entries: []JournalEntry{"Welcome to my journal!", "It's been a while since my first post."},
+}
+
 func init() {
 	journalManager = JournalManager{}
+	journalManager.journals = map[string]Journal{}
+	journalManager.journals[initialJournal.Name] = initialJournal
 }
 
 type JournalManager struct {
@@ -13,13 +20,11 @@ type JournalManager struct {
 }
 
 type Journal struct {
-	name string
+	Name    string
+	Entries []JournalEntry
 }
 
-type JournalEntry struct {
-	date  string
-	entry string
-}
+type JournalEntry string
 
 func (j *JournalManager) GetAllJournals() ([]Journal, error) {
 	journals := []Journal{}
@@ -41,9 +46,9 @@ func (j *JournalManager) GetJournalByName(name string) (Journal, error) {
 func (j *JournalManager) AddNewJournal(name string) error {
 	_, exists := j.journals[name]
 	if exists {
-		return fmt.Errorf("journal with name '%v' already exists", name)
+		return fmt.Errorf("journal with Name '%v' already exists", name)
 	} else {
-		j.journals[name] = Journal{name: name}
+		j.journals[name] = Journal{Name: name}
 	}
 	return nil
 }

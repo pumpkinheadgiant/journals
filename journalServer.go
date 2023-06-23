@@ -10,6 +10,7 @@ func main() {
 	server := pat.New()
 
 	server.Get("/journals", authStub(journalServer.GetAllJournalsHandler))
+	server.Put("/journal", authStub(journalServer.PostJournalHandler))
 	http.Handle("/", server)
 
 	err := http.ListenAndServe(":8080", nil)
