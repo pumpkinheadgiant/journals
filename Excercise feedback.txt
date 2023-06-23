@@ -1,0 +1,14 @@
+Thanks for this opportunity! I didn't complete the exercise: I only implemented the GET /journals and Post /journal endpoints. Rather than complete the remainder, I moved over to ensure there was a viable README and a POSTMAN collection available to hit the endpoints.
+
+I think this is a great exercise. I like the idea of starting a little project from scratch, and then doing a series of Commits to ostensibly allow for the 'evolution' of the codebase to be somewhat observed.
+
+Beyond implementing the remaining CRUD endpoints, this solution still needs to account for:
+ - authentication/authorization to ensure that only the appropriate people could use the site, and only see the data that they themselves own
+ - a "real" ID mechanism; the simple "journal name as ID" is fine for an hours work, but not a good idea
+ - error handling would need to be fleshed out; I left some markers in the code indicating unhandled errors
+
+For a QA Engineer, testing these endpoints would be initially guided by the provided POSTMAN collections, but obviously, in its current state, there isn't a lot to validate. A good QA engineer would be able to expose the existing shortcomings of the implementation fairly easily.
+
+I had wanted to throw a quick'n'dirty MongoDB persistence layer, but alas, time escaped me.
+
+Thanks again, Eric
